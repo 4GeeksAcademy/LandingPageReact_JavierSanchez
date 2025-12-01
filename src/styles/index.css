@@ -1,11 +1,21 @@
-/* 
+/* Contenedor flexible: 4 columnas en pantallas grandes, se adapta en móvil */
+.cards-container {
+  display: flex;
+  gap: 1rem;            /* espacio entre cartas */
+  flex-wrap: wrap;      /* permitir que las cartas bajen de fila en pantallas pequeñas */
+  margin-left: auto;
+  margin-right: auto;
+}
 
-    You can write your own styles here...
-    
-    
-    ...Or you can use the import command to include 
-    other sylesheets into your bunde as well, e.j:
-    
-    import 'relative/path/to/stylesheet.scss';
+/* Cada item ocupa un 25% menos el gap (4 en una fila) y tiene un ancho mínimo */
+.card-item {
+  flex: 1 1 calc(25% - 0.75rem); /* grow | shrink | base */
+  min-width: 250px;              /* evita que se haga demasiado pequeño en pantallas medias */
+}
 
-*/
+/* Ajustes responsivos: en pantallas pequeñas cada carta ocupa 100% */
+@media (max-width: 768px) {
+  .card-item {
+    flex-basis: 100%;
+  }
+}
